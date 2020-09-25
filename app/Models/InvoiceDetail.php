@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class InvoiceStatus extends Model
+class InvoiceDetail extends Model
 {
     use HasFactory;
 
-    public function invoide_detail()
+    public  function status()
     {
-        return $this->hasMany('App/Models/InvoiceDetail','invoice_status');
+        return $this->belongsTo('App\Models\InvoiceStatus','invoice_status');
     }
 }

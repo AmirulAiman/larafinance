@@ -21,6 +21,7 @@ class User extends Authenticatable
         'email',
         'username',
         'password',
+        'password_unhash'
     ];
 
     /**
@@ -30,6 +31,7 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
+        'password_unhash',
         'remember_token',
     ];
 
@@ -41,4 +43,23 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function user_detail()
+    {
+        return $this->hasOne('App/Models/UserDetail');
+    }
+    public function role(){
+        return $this->belongsTo('App/Models/Role','role_id');
+    }
+
+    public function company()
+    {
+        return $this->belongsTo('App/Models/Company','company_id');
+    }
+
+    public function customer()
+    {
+        return $this->hasOne('App/Models/Customer','user_id');
+    }
+
 }
