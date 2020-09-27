@@ -9,8 +9,24 @@ class InvoiceDetail extends Model
 {
     use HasFactory;
 
-    public  function status()
+    public function customer()
     {
-        return $this->belongsTo('App\Models\InvoiceStatus','invoice_status');
+        return $this->belongsTo(
+            'App\Models\Customer',
+            'customer_id'
+        );
+    }
+
+    public function company()
+    {
+        return $this->belongsTo(
+            'App\Models\Company',
+            'company_id'
+        );
+    }
+
+    public function items()
+    {
+        return $this->hasMany('App\Models\InvoiceItem');
     }
 }

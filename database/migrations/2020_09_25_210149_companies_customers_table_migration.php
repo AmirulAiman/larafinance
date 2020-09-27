@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateInvoiceStatusesTable extends Migration
+class CompaniesCustomersTableMigration extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateInvoiceStatusesTable extends Migration
      */
     public function up()
     {
-        Schema::create('invoice_statuses', function (Blueprint $table) {
+        Schema::create('companies_customers', function (Blueprint $table) {
             $table->id();
-            $table->string('invoice_status');
+            $table->unsignedInteger('company_id');
+            $table->unsignedInteger('customer_id');
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class CreateInvoiceStatusesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('invoice_statuses');
+        Schema::dropIfExists('companies_customers');
     }
 }

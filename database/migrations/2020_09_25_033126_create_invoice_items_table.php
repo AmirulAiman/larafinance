@@ -17,6 +17,7 @@ class CreateInvoiceItemsTable extends Migration
             $table->id();
             $table->unsignedInteger('invoice_detail_id')->unsigned();
             $table->string('invoice_item');
+            $table->float('invoice_item_price')->default(0);
             $table->timestamps();
         });
     }
