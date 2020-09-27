@@ -66,8 +66,21 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="/company/dashboard">Dashboard</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/company/invoice">Invoice</a>
+                                <li class="nav-item dropdown">
+                                    <a
+                                        id="dropdown-invoice"
+                                        class="nav-link dropdown-toggle"
+                                        href="#"
+                                        role="button"
+                                        data-toggle="dropdown"
+                                        aria-haspopup="true"
+                                        aria-expanded="false"
+                                        v-pre
+                                    >Invoice</a>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-invoice">
+                                        <a href="/company/invoice" class="dropdown-item">All Invoice</a>
+                                        <a href="/company/new-invoice" class="dropdown-item">New Invoice</a>
+                                    </div>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="/company/customers">Customers</a>

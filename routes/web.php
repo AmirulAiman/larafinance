@@ -30,7 +30,12 @@ Route::middleware('auth')->group(function(){
             Route::view('/dashboard','pages.company.dashboard')->name('company.dashboard');
             Route::view('/invoice','pages.company.invoice')->name('company.invoice');
             Route::view('/customers','pages.company.customer')->name('company.customer');
-            Route::view('/new-invoice','pages.company.new-invoice')->name('company.new-invoice');
+            Route::get('/new-invoice/{invoice}',function($invoice){
+                return view('pages.company.new-invoice',['invoice' => $invoice]);
+            })->name('company.new-invoice');
+            Route::get('/invoice-detail/{invoice}',function(){
+
+            });
         });
     });
     Route::middleware('customer')->group(function(){

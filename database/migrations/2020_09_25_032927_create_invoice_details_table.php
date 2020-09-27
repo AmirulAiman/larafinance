@@ -16,10 +16,12 @@ class CreateInvoiceDetailsTable extends Migration
         Schema::create('invoice_details', function (Blueprint $table) {
             $table->id();
             $table->string('invoice_title');
+            $table->string('invoice_due');
+            $table->float('invoice_total')->default(0.0);
             $table->unsignedInteger('company_id')->unsigned();
             $table->unsignedInteger('customer_id')->unsigned();
             $table->unsignedInteger('company_customer_id')->unsigned();
-            $table->string('invoice_status')->default('Pending');
+            $table->string('invoice_status')->default('pending');
             $table->boolean('payment_success')->default(false);
             $table->timestamps();
         });
