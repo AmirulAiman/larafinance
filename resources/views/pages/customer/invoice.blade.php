@@ -7,20 +7,8 @@
                 <h3>Invoices</h3>
             </div>
             <div class="card-body">
-                <div class="">
-                    <div class="form-group">
-                        <label for="search">Search: </label>
-                        <input
-                            class="form-control"
-                            type="text"
-                            name="search"
-                            id="search"
-                            placeholder="Filter invoice list..."
-                        >
-                    </div>
-                </div>
                 <div>
-                    <livewire:invoice-list/>
+                    <livewire:customer-invoice-list/>
                 </div>
 {{--                <div class="d-flex justify-content-center">--}}
 {{--                    <ul class="pagination">--}}
