@@ -42,16 +42,21 @@ class CompanyNewInvoice extends Component
 
     public function mount($invoice)
     {
+        $this->items = InvoiceItem::where('invoice_detail_id',$invoice)->get();
+        $this->invoice_id = $invoice;
+
+        $this->customers = Auth::user()->company->customers;
+
         $this->invoice = InvoiceDetail::find($invoice);
         $this->customer_id = $this->invoice->customer_id;
         $this->invoice_title = $this->invoice->invoice_title;
         $this->invoice_due = $this->invoice->invoice_due;
         $this->invoice_status = $this->invoice->invoice_status;
 
-        $this->items = InvoiceItem::where('invoice_detail_id',$invoice)->get();
-        $this->invoice_id = $invoice;
-
-        $this->customers = Auth::user()->company->customers;
+        foreach($this->items as $item)
+        {
+            $this->total += ($item->invoice_item_amount * $item->invoice_item_price);
+        }
     }
 
     protected function clearItemForm()
@@ -71,6 +76,7 @@ class CompanyNewInvoice extends Component
     {
 //        dd($this->invoice_id);
         $this->validate($this->rule1);
+        $this->total += ($this->itemAmount * floatval($this->itemPrice));
         InvoiceItem::create([
             'invoice_detail_id' => $this->invoice_id,
             'invoice_item' => $this->itemName,
@@ -83,6 +89,7 @@ class CompanyNewInvoice extends Component
 
     public function removeItem(InvoiceItem $item)
     {
+        $this->total -= (floatval($item->invoice_item_price) * $item->invoice_item_amount);
         $item->delete();
         $this->render();
     }
@@ -95,8 +102,9 @@ class CompanyNewInvoice extends Component
         $invoice->invoice_title = $this->invoice_title;
         $invoice->invoice_due = $this->invoice_due;
         $invoice->invoice_status = $this->invoice_status;
+        $invoice->invoice_total = $this->total;
         $invoice->save();
-        return $this->redirect()->route('company.invoice');
+        return redirect()->route('company.invoice');
     }
 
 

@@ -77,7 +77,7 @@ class User extends Authenticatable
         if(Auth::user()->role->role_title === 'Company')
         {
             return $this->belongsToMany(
-                'App\Models\Customer',
+                'App\Models\User',
                 'companies_customers',
                 'company_id',
                 'customer_id',

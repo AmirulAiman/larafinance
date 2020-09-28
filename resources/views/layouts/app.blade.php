@@ -66,21 +66,8 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="/company/dashboard">Dashboard</a>
                                 </li>
-                                <li class="nav-item dropdown">
-                                    <a
-                                        id="dropdown-invoice"
-                                        class="nav-link dropdown-toggle"
-                                        href="#"
-                                        role="button"
-                                        data-toggle="dropdown"
-                                        aria-haspopup="true"
-                                        aria-expanded="false"
-                                        v-pre
-                                    >Invoice</a>
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-invoice">
-                                        <a href="/company/invoice" class="dropdown-item">All Invoice</a>
-                                        <a href="/company/new-invoice" class="dropdown-item">New Invoice</a>
-                                    </div>
+                                <li class="nav-item">
+                                    <a href="/company/invoice" class="nav-link">Invoice</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="/company/customers">Customers</a>
@@ -124,5 +111,6 @@
         </main>
     </div>
     @livewireScripts
+    @include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
 </body>
 </html>

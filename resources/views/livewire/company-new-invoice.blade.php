@@ -151,7 +151,7 @@
             <button
                 class="btn btn-primary"
                 type="submit"
-            >Update Invoice</button>
+            >Save Invoice</button>
         </div>
     </form>
 </div>

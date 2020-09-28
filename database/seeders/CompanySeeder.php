@@ -15,7 +15,7 @@ class CompanySeeder extends Seeder
     public function run()
     {
         Company::create([
-            'company_name' => 'Ahmad & CO. Sdn. Bhd.',
+            'company_name' => 'Ahmad & Co. Sdn. Bhd.',
             'address1' => 'Jalan Kangar-alor Star, Behor Temak',
             'address2' => 'Behor Temak',
             'city' => 'Kangar',

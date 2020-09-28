@@ -39,4 +39,15 @@ class CompanyList extends Component
             ]);
         }
     }
+
+    public function check($id)
+    {
+        foreach ($this->selected as $s)
+        {
+            if ($s == $id)
+                return true;
+        }
+        return false;
+    }
+
 }

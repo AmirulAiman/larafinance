@@ -21,7 +21,11 @@ class CompanyInvoiceList extends Component
 
     public function mount()
     {
-        $this->invoices = Auth::user()->company->invoices;
+        $this->invoices = Auth::user()
+            ->company
+            ->invoices()
+            ->orderBy('invoice_total','desc')
+            ->get();
         $this->customers = Auth::user()->company->customers;
     }
 

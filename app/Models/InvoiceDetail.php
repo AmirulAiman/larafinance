@@ -14,7 +14,7 @@ class InvoiceDetail extends Model
     public function customer()
     {
         return $this->belongsTo(
-            'App\Models\Customer',
+            'App\Models\User',
             'customer_id'
         );
     }

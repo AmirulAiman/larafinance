@@ -112,7 +112,7 @@
                     <td>#</td>
                     <td>Customers</td>
                     <td>Invoice No.</td>
-                    <td>Amount(RM)</td>
+                    <td>Outstanding(RM)</td>
                     <td>Status</td>
                     <td>Action</td>
                 </tr>
@@ -120,12 +120,12 @@
                 <tbody>
                 @if(count($invoices) > 0)
                     @foreach($invoices as $invoice)
-                        <tr class="">
+                        <tr class="@if($invoice->invoice_status == 'pending') alert alert-danger @endif">
                             <td>{{ $loop->index+1 }}</td>
-                            <td>Amirul Aiman Bin Abdullah</td>
-                            <td>Invoice #123</td>
-                            <td>150.50</td>
-                            <td>Pending</td>
+                            <td>{{ $invoice->customer->name }}</td>
+                            <td>{{ $invoice->invoice_title }}</td>
+                            <td>{{ $invoice->invoice_total }}</td>
+                            <td>{{ ucfirst($invoice->invoice_status) }}</td>
                             <td>
                                 <button class="btn btn-info"><span class="fas fa-info"></span></button>
                             </td>
