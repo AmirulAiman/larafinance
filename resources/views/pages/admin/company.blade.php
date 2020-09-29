@@ -2,6 +2,6 @@
 
 @section('content')
     <div class="container">
-        List of Companies
+        <livewire:admin-company-list/>
     </div>
 @endsection
