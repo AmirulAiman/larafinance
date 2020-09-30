@@ -81,7 +81,6 @@ class AdminCompanyList extends Component
         ]);
 
         $company->users()->save($user);
-        $this->clearForm();
         $this->closeModal();
     }
 
@@ -121,7 +120,6 @@ class AdminCompanyList extends Component
         $user->save();
 
         $this->closeModal();
-        $this->clearForm();
         $this->edit = false;
     }
 
@@ -132,6 +130,7 @@ class AdminCompanyList extends Component
 
     public function closeModal()
     {
+        $this->clearForm();
         $this->dispatchBrowserEvent('closeModal');
     }
 
